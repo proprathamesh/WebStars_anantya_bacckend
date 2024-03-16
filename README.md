@@ -22,6 +22,8 @@
     }
     ```
 
+5. **Response**: you get `token` and `message`
+
 ## 2. Guidelines for getUsers Route
 
 -   **URL**: `/api/users`
@@ -444,7 +446,7 @@
     }
     ```
 
-## Guidelines for deleteDocumentById
+## 5. Guidelines for deleteDocumentById
 
 -   **URL**: `/api/documents/:id`
 -   **HTTP Request Type**: `DELETE`
@@ -460,5 +462,34 @@
     ```json
     {
         "message": "Document deleted"
+    }
+    ```
+
+# Route for Login
+
+## Guidelines for loginUser Route
+
+1. **Description**:
+
+    The `loginUser` route is used to authenticate a user by verifying their email and password. If the authentication is successful, a JWT token is generated and returned to the client.
+
+2. **Endpoint**
+
+    - **URL**: `/login`
+    - **HTTP Method**: POST
+
+3. **Request Body**
+
+    - **Type**: JSON
+    - **Fields**:
+    - `email` (string, required): The email address of the user.
+    - `password` (string, required): The password of the user.
+
+4. **Example Request Body**
+
+    ```json
+    {
+        "email": "user@example.com",
+        "password": "password123"
     }
     ```
