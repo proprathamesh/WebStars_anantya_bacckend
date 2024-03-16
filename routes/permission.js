@@ -15,12 +15,9 @@ const grantPermission = async (req, res) => {
 
 const updatePermissionById = async (req, res) => {
     try {
-        const permission = await Permission.findOneAndUpdate(
-            {
-                medicalRecordId: req.body.medicalRecordId,
-                doctorId: req.body.doctorId,
-            },
-            { type: req.body.type },
+        const permission = await Permission.findByIdAndUpdate(
+            req.params.id,
+            req.body,
             { new: true, upsert: true }
         );
         res.json(permission);
@@ -30,19 +27,17 @@ const updatePermissionById = async (req, res) => {
 };
 
 const deletePermissionById = async (req, res) => {
+    const id = req.params.id;
     try {
-        const permission = await Permission.findOneAndDelete({
-            medicalRecordId: req.body.medicalRecordId,
-            doctorId: req.body.doctorId,
-        });
-        res.json({ message: "Permission deleted" });
+        const permission = await Permission.findByIdAndDelete(id);
+        res.json(permission);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 };
 
 router.post("/permissions", grantPermission);
-router.put("/permissions", updatePermissionById);
-router.delete("/permissions", deletePermissionById);
+router.put("/permissions/:id", updatePermissionById);
+router.delete("/permissions/:id", deletePermissionById);
 
 export default router;
