@@ -12,7 +12,8 @@ import permissionRoutes from "./routes/permission.js";
 
 const app = express();
 const port = 3000;
-mongoose.connect("mongodb://127.0.0.1:27017/AlphaByte");
+mongoose.connect(process.env.CONNECTION_URL);
+// mongoose.connect("mongodb://127.0.0.1:27017/AlphaByte");
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
