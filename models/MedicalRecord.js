@@ -35,6 +35,9 @@ const medicalRecordSchema = new mongoose.Schema({
         enum: ["pending", "done", "rejected", "undone"],
         default: "undone",
     },
+    token: {
+        type: String,
+    },
 });
 
 const MedicalRecord = mongoose.model("MedicalRecord", medicalRecordSchema);

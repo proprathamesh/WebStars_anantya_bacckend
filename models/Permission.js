@@ -16,6 +16,9 @@ const permissionSchema = new mongoose.Schema({
         enum: ["read", "write"],
         required: true,
     },
+    token: {
+        type: String,
+    },
 });
 
 const Permission = mongoose.model("Permission", permissionSchema);

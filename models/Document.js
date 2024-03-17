@@ -15,6 +15,9 @@ const documentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    token: {
+        type: String,
+    },
 });
 
 const Document = mongoose.model("Document", documentSchema);
