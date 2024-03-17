@@ -32,8 +32,8 @@ const medicalRecordSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ["pending", "done", "rejected"],
-        required: true,
+        enum: ["pending", "done", "rejected", "undone"],
+        default: "undone",
     },
 });
 
