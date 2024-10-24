@@ -12,7 +12,15 @@ import permissionRoutes from "./routes/permission.js";
 
 const app = express();
 const port = 3000;
-mongoose.connect(process.env.CONNECTION_URL);
+
+const username = 'Prathamesh1712';
+const password = 'Psy17122003';
+const dbName = 'medicalData';  // Replace with your database name
+const clusterEndpoint = 'medicalapp.cfmceoy2uckn.ap-south-1.docdb.amazonaws.com:27017';
+const caFilePath = '/global-bundle.pem';  // Ensure the CA file path is correct
+const uri = `mongodb://${username}:${password}@${clusterEndpoint}/${dbName}?ssl=true&ssl_ca_certs=${caFilePath}`;
+mongoose.connect(uri);
+
 // mongoose.connect("mongodb://127.0.0.1:27017/AlphaByte");
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
